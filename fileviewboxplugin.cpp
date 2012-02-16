@@ -47,7 +47,7 @@ bool FileViewBoxPlugin::beginRetrieval(const QString& directory)
         const QStringList replySplitted = reply.split(QLatin1Char('\t'));
         if (replySplitted.size() < 2)
             continue;
-        if (reply.Splitted.at(0) != QLatin1String("status"))
+        if (replySplitted.at(0) != QLatin1String("status"))
             continue;
 
         const QString state = replySplitted.at(1);
