@@ -4,4 +4,4 @@ Name=Dropbox
 
 X-KDE-ServiceTypes=FileViewVersionControlPlugin
 MimeType=text/plain;
-X-KDE-Library=fileviewsvnplugin
+X-KDE-Library=fileviewboxplugin
