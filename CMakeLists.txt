@@ -1,10 +1,10 @@
 project(fileviewboxplugin)
 
-FIND_PACKAGE(KDE4 REQUIRED)
-FIND_PACKAGE(LibKonq REQUIRED)
-INCLUDE(KDE4Defaults)
+find_package(KDE4 REQUIRED)
+find_package(LibKonq REQUIRED)
+include(KDE4Defaults)
 
-include_directories(${QT_INCLUDES} ${LIBKONQ_INCLUDE_DIR})
+include_directories(${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${LIBKONQ_INCLUDE_DIR})
 
 set(fileviewboxplugin_SRCS fileviewboxplugin.cpp)
 kde4_add_plugin(fileviewboxplugin  ${fileviewboxplugin_SRCS})
