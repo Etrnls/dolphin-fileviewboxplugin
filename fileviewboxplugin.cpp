@@ -1,5 +1,6 @@
 #include "fileviewboxplugin.h"
 
+#include <kdebug.h>
 #include <kfileitem.h>
 #include <QDir>
 #include <QLocalSocket>
@@ -39,7 +40,9 @@ bool FileViewBoxPlugin::beginRetrieval(const QString& directory)
         const QString fileName = dir.absoluteFilePath(files.at(i));
         const QString command = QLatin1String("icon_overlay_file_status\npath\t") + fileName;
 
+        kDebug() << "sendCommand" << command;
         const QString reply = sendCommand(command);
+        kDebug() << "reply =" << reply;
         if (reply.isEmpty())
             continue;
 
@@ -86,8 +89,10 @@ QString FileViewBoxPlugin::sendCommand(const QString &command)
     QLocalSocket socket;
     socket.connectToServer(QDir::home().absoluteFilePath(QLatin1String(".dropbox/command_socket")));
 
-    if (!socket.waitForConnected())
+    if (!socket.waitForConnected()) {
+        kDebug() << "Failed to connect to dropbox command socket";
         return QString();
+    }
 
     socket.write((command + QLatin1String("\ndone\n")).toUtf8());
     socket.flush();
